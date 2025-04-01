@@ -4,7 +4,8 @@ import viteLogo from '/vite.svg'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
+  const maxCountValue: number = 15;
 
   function EditInfo() {
     return (
@@ -15,13 +16,34 @@ function App() {
   }
 
   function InfoAboutCountLimit() {
-    if (count !== 15) {
+    if (count !== maxCountValue) {
       return null;
     }
     return (
       <p>
         You reacht the countown limit
       </p>
+    )
+  }
+
+  function updateCount(increase: boolean) {
+    if (increase) {
+      if (count < maxCountValue) {
+        return setCount((count) => count + 1);
+      }
+    } else {
+      return setCount((count) => count - 1);
+    }
+
+    return setCount((count) => count);
+  }
+
+  function ChangeCount({ increase }: { increase: boolean }) {
+    return (
+      <button onClick={() => updateCount(increase)}
+      >
+        {increase ? 'Erhöhen' : 'Reduzieren'}
+      </button>
     )
   }
 
@@ -37,9 +59,14 @@ function App() {
       </div>
       <h1>Vite + React</h1>
       <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
+        <ChangeCount 
+          increase={false}
+          />
+        <ChangeCount 
+          increase={true}
+        />
+        <br/>
+        count is {count}
         <EditInfo/>
       </div>
       <p className="read-the-docs">
