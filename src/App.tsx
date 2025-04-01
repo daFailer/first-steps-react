@@ -3,6 +3,8 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 
+import InfoAboutCountLimit from './components/InfoAboutCountLimit';
+
 function App() {
   const [count, setCount] = useState(0);
   const maxCountValue: number = 15;
@@ -15,16 +17,16 @@ function App() {
     )
   }
 
-  function InfoAboutCountLimit() {
-    if (count !== maxCountValue) {
-      return null;
-    }
-    return (
-      <p>
-        You reacht the countown limit
-      </p>
-    )
-  }
+  // function InfoAboutCountLimit() {
+  //   if (count !== maxCountValue) {
+  //     return null;
+  //   }
+  //   return (
+  //     <p>
+  //       You reacht the countown limit
+  //     </p>
+  //   )
+  // }
 
   function updateCount(increase: boolean) {
     if (increase) {
@@ -72,7 +74,10 @@ function App() {
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
-      <InfoAboutCountLimit/>
+      <InfoAboutCountLimit
+        currentCount={count}
+        maxCountValue={maxCountValue}
+      />
     </>
   )
 }
