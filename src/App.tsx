@@ -9,8 +9,19 @@ function App() {
   function EditInfo() {
     return (
       <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
+        Edit <code>src/App.tsx</code> and save to test HMR
+      </p>
+    )
+  }
+
+  function InfoAboutCountLimit() {
+    if (count !== 15) {
+      return null;
+    }
+    return (
+      <p>
+        You reacht the countown limit
+      </p>
     )
   }
 
@@ -34,6 +45,7 @@ function App() {
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
+      <InfoAboutCountLimit/>
     </>
   )
 }
